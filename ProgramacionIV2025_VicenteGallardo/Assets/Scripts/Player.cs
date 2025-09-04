@@ -3,7 +3,11 @@ using System.Collections.Generic;
 public class Player : MonoBehaviour
 {
     [SerializeField] Movement movement;
+    [SerializeField] Shooting shooting;
+    [SerializeField] Bullet bullet;
     public List<StatInfo> currentStats = new List<StatInfo>();
+
+    [Header("TankPieces")]
     public Color piece_lightColor;
     public TankPieceScriptable piece_Track;
     public TankPieceScriptable piece_Hull;
@@ -11,6 +15,14 @@ public class Player : MonoBehaviour
     public TankPieceScriptable piece_Gun;
     public TankPieceScriptable piece_GunConnector;
     public TankPieceScriptable piece_Projectile;
+
+    [Header("TankStats")]
+    public StatInfo stat_Spd;
+    public StatInfo stat_RootSpd;
+    public StatInfo stat_Attack;
+    public StatInfo stat_Defense;
+    public StatInfo stat_Life;
+    public StatInfo stat_BulletSpd;
 
     private void Start()
     {
@@ -163,12 +175,14 @@ public class Player : MonoBehaviour
                     movement.rotateSpd = item.value;
                     break;
                 case StatType.Attack:
+                    bullet.dmg = item.value;
                     break;
                 case StatType.Defense:
                     break;
                 case StatType.Life:
                     break;
                 case StatType.BulletSpd:
+                    shooting.bulletSpd = item.value;
                     break;
                 default:
                     break;
