@@ -6,6 +6,11 @@ public class Player : MonoBehaviour
     [SerializeField] Shooting shooting;
     [SerializeField] Bullet bullet;
     public List<StatInfo> currentStats = new List<StatInfo>();
+    public string playerName;
+    public int currentDmg;
+    public int score;
+    public TankSpriteModifier spriteModifier;
+
 
     [Header("TankPieces")]
     public Color piece_lightColor;
@@ -27,6 +32,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         UpdateControllerWithTankPieces();
+        LoadData();
     }
 
     public void OnTankPieceChangeEvent(TankPieceScriptable tankPiece)
@@ -62,7 +68,6 @@ public class Player : MonoBehaviour
         UpdateControllerWithTankPieces();
     }
 
-            
     public void UpdateControllerWithTankPieces()
     {
         List<StatInfo> statinfo = new List<StatInfo>();
@@ -175,14 +180,14 @@ public class Player : MonoBehaviour
                     movement.rotateSpd = item.value;
                     break;
                 case StatType.Attack:
-                    bullet.dmg = item.value;
+                    //bullet.dmg = item.value;
                     break;
                 case StatType.Defense:
                     break;
                 case StatType.Life:
                     break;
                 case StatType.BulletSpd:
-                    shooting.bulletSpd = item.value;
+                    //shooting.bulletSpd = item.value;
                     break;
                 default:
                     break;
@@ -190,6 +195,66 @@ public class Player : MonoBehaviour
 
         }
     }
+
+    void LoadData()
+    {
+        LoadSaveSystem loadSave = new LoadSaveSystem();
+        PlayerDataInfo playerData = loadSave.LoadPlayerInfo();
+
+
+
+      playerName = playerData.playerName; 
+      currentDmg = playerData.currentDmg; 
+      score = playerData.score; 
+
+
+      LoadResources loadResource = new LoadResources();
+
+
+        piece_Track = loadResource.GetTankPieceScriptable(TankPieceType.Track, playerData.pieceNames[0]);
+        piece_Hull = loadResource.GetTankPieceScriptable(TankPieceType.Hull, playerData.pieceNames[1]);
+        piece_Tower = loadResource.GetTankPieceScriptable(TankPieceType.Tower, playerData.pieceNames[2]);
+        piece_Gun = loadResource.GetTankPieceScriptable(TankPieceType.Gun, playerData.pieceNames[3]);
+        piece_GunConnector = loadResource.GetTankPieceScriptable(TankPieceType.GunConnector, playerData.pieceNames[4]);
+        piece_Projectile = loadResource.GetTankPieceScriptable(TankPieceType.Projectile, playerData.pieceNames[5]);
+
+
+        spriteModifier.ChangeSprite(piece_Track.pieceType,piece_Track.pieceSprite);
+        spriteModifier.ChangeSprite(piece_Hull.pieceType,piece_Hull.pieceSprite);
+        spriteModifier.ChangeSprite(piece_Tower.pieceType,piece_Tower.pieceSprite);
+        spriteModifier.ChangeSprite(piece_Gun.pieceType,piece_Gun.pieceSprite);
+        spriteModifier.ChangeSprite(piece_GunConnector.pieceType,piece_GunConnector.pieceSprite);
+        spriteModifier.ChangeSprite(piece_Projectile.pieceType,piece_Projectile.pieceSprite);
+
+
+        UpdateControllerWithTankPieces();
+    }
+     
+    public void SaveData()
+    {
+        PlayerDataInfo playerData = new PlayerDataInfo();
+
+        playerData.playerName = playerName;
+        playerData.currentDmg = currentDmg;
+        playerData.score = score;
+
+        playerData.pieceNames = new List<string>();
+        playerData.pieceNames.Add(piece_Track.id);
+        playerData.pieceNames.Add(piece_Hull.id);
+        playerData.pieceNames.Add(piece_Tower.id);
+        playerData.pieceNames.Add(piece_Gun.id);
+        playerData.pieceNames.Add(piece_GunConnector.id);
+        playerData.pieceNames.Add(piece_Projectile.id);
+
+
+        LoadSaveSystem loadSave = new LoadSaveSystem();
+        loadSave.SavePlayerInfo(playerData);
+
+
+    }
+
+
+
 }
 
 
