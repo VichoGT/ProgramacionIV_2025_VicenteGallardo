@@ -180,14 +180,14 @@ public class Player : MonoBehaviour
                     movement.rotateSpd = item.value;
                     break;
                 case StatType.Attack:
-                    //bullet.dmg = item.value;
+                    bullet.dmg = item.value;
                     break;
                 case StatType.Defense:
                     break;
                 case StatType.Life:
                     break;
                 case StatType.BulletSpd:
-                    //shooting.bulletSpd = item.value;
+                    shooting.bulletSpd = item.value;
                     break;
                 default:
                     break;
