@@ -1,16 +1,22 @@
 using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
 public class Player : MonoBehaviour
 {
     [SerializeField] Movement movement;
     [SerializeField] Shooting shooting;
     [SerializeField] Bullet bullet;
+   
     public List<StatInfo> currentStats = new List<StatInfo>();
-    public string playerName;
+    public string tankName;
     public int currentDmg;
     public int score;
     public TankSpriteModifier spriteModifier;
 
+
+    [Header("NameTank")]
+    public TextMeshProUGUI tankNameCurrent;
+    [SerializeField] TMPro.TMP_InputField inputField;
 
     [Header("TankPieces")]
     public Color piece_lightColor;
@@ -29,12 +35,25 @@ public class Player : MonoBehaviour
     public StatInfo stat_Life;
     public StatInfo stat_BulletSpd;
 
-    private void Start()
+    private void Awake()
     {
-        UpdateControllerWithTankPieces();
-        LoadData();
+        inputField.onValueChanged.AddListener(ChangeName);
     }
 
+    private void Start()
+    {
+        
+        UpdateControllerWithTankPieces();
+        //LoadData();
+         
+        
+    }
+
+    public void ChangeName(string val)
+    {
+        tankNameCurrent.text = val;
+        tankName = val;
+    }
     public void OnTankPieceChangeEvent(TankPieceScriptable tankPiece)
     {
         switch (tankPiece.pieceType)
@@ -164,7 +183,7 @@ public class Player : MonoBehaviour
                 statinfo.Add(newInfo);
             }
         }
-        currentStats = statinfo;
+        currentStats = statinfo;        
         UpdateControllerStats();
     }
     public void UpdateControllerStats()
@@ -196,14 +215,14 @@ public class Player : MonoBehaviour
         }
     }
 
-    void LoadData()
+    public void LoadData()
     {
         LoadSaveSystem loadSave = new LoadSaveSystem();
         PlayerDataInfo playerData = loadSave.LoadPlayerInfo();
 
 
 
-      playerName = playerData.playerName; 
+       ChangeName(playerData.playerName);
       currentDmg = playerData.currentDmg; 
       score = playerData.score; 
 
@@ -234,7 +253,7 @@ public class Player : MonoBehaviour
     {
         PlayerDataInfo playerData = new PlayerDataInfo();
 
-        playerData.playerName = playerName;
+        playerData.playerName = tankName;
         playerData.currentDmg = currentDmg;
         playerData.score = score;
 
