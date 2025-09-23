@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8a175e83839a95f44936772c07448775
+guid: 8487f4686fb16574c8bf75fd01ca3824
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4249406524717783197
-    second: "\u2014Pngtree\u2014save button orange gradient for_6463451_0"
+      213: 2381845600421104027
+    second: SAVE_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,7 +97,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u2014Pngtree\u2014save button orange gradient for_6463451_0"
+      name: SAVE_0
       rect:
         serializedVersion: 2
-        x: 153
-        y: 398
-        width: 907
-        height: 343
+        x: 175
+        y: 57
+        width: 601
+        height: 598
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 36728f3b7431705c0800000000000000
-      internalID: -4249406524717783197
+      spriteID: b994dea34f30e0120800000000000000
+      internalID: 2381845600421104027
       vertices: []
       indices: 
       edges: []

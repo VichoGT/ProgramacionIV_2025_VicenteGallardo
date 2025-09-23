@@ -16,7 +16,7 @@ public enum StatType
     Attack,
     Defense,
     Life,
-    BulletSpd,
+    PowerShoot,
 }
 
 

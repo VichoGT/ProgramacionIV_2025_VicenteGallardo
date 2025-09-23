@@ -1,23 +1,20 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Shooting : MonoBehaviour
 {
+    [Header("Input Systems")]
     public InputActionAsset inputActions;
-
     private InputAction m_attackAction;
 
-
+    [Header("Bullet")]
     public Transform spawnPoint;
-    public float bulletSpd;
     public GameObject bulletPrefab;
+    public float powerShoot;
 
-    public int maxQuantity;
-    private int index;
-    public Transform poolingParent; 
-    private List<GameObject> poolingList = new List<GameObject>();
-
+   
     public void OnEnable()
     {
         inputActions.FindActionMap("Player").Enable();
@@ -37,28 +34,20 @@ public class Shooting : MonoBehaviour
             Shoot();
         }
     }
+    
     public void Shoot()
     {
-        if (poolingList.Count >= maxQuantity)
+
+        GameObject bullet = Instantiate(bulletPrefab, spawnPoint.position, Quaternion.identity);
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        if (rb != null)
         {
-            poolingList[index].gameObject.SetActive(true);
-            poolingList[index].transform.position = spawnPoint.position;
-            poolingList[index].GetComponent<Rigidbody2D>().linearVelocity = spawnPoint.up * bulletSpd;
-            index++;
-            if (index >= maxQuantity)
-            {
-                index = 0;
-            }
+            rb.linearVelocity = spawnPoint.up * powerShoot;
+            rb.transform.up = spawnPoint.up;
         }
-        else
-        {
-            poolingList.Add(InstantiateBullet(spawnPoint.position, spawnPoint.up, bulletSpd));
-        }
+        Destroy(bullet,2);
     }
-    public GameObject InstantiateBullet(Vector3 pos, Vector3 dir, float spd)
-    {
-        GameObject newObj = Instantiate(bulletPrefab, pos, Quaternion.identity, poolingParent);
-        newObj.GetComponent<Rigidbody2D>().linearVelocity = dir * spd;
-        return newObj;
-    }
+
+
+ 
 }

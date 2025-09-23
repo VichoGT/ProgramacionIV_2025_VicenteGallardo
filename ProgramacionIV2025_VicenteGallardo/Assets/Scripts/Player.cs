@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     public TankPieceScriptable piece_Gun;
     public TankPieceScriptable piece_GunConnector;
     public TankPieceScriptable piece_Projectile;
+    public ColorPicker colorpicker;
 
     [Header("TankStats")]
     public StatInfo stat_Spd;
@@ -33,7 +34,7 @@ public class Player : MonoBehaviour
     public StatInfo stat_Attack;
     public StatInfo stat_Defense;
     public StatInfo stat_Life;
-    public StatInfo stat_BulletSpd;
+    public StatInfo stat_PowerShoot;
 
     private void Awake()
     {
@@ -44,7 +45,7 @@ public class Player : MonoBehaviour
     {
         
         UpdateControllerWithTankPieces();
-        //LoadData();
+        LoadData();
          
         
     }
@@ -59,7 +60,7 @@ public class Player : MonoBehaviour
         switch (tankPiece.pieceType)
         {
             case TankPieceType.Light:
-                Debug.Log("Nick Farmea Aura");
+                Debug.Log("si");
                 break;
             case TankPieceType.Track:
                 piece_Track = tankPiece;
@@ -87,6 +88,11 @@ public class Player : MonoBehaviour
         UpdateControllerWithTankPieces();
     }
 
+    public void OnChangeColorTank(Color tankColor)
+    {
+        piece_lightColor = tankColor;
+
+    }
     public void UpdateControllerWithTankPieces()
     {
         List<StatInfo> statinfo = new List<StatInfo>();
@@ -205,8 +211,8 @@ public class Player : MonoBehaviour
                     break;
                 case StatType.Life:
                     break;
-                case StatType.BulletSpd:
-                    shooting.bulletSpd = item.value;
+                case StatType.PowerShoot:
+                    shooting.powerShoot = item.value;
                     break;
                 default:
                     break;
@@ -223,11 +229,12 @@ public class Player : MonoBehaviour
 
 
        ChangeName(playerData.playerName);
-      currentDmg = playerData.currentDmg; 
-      score = playerData.score; 
+       currentDmg = playerData.currentDmg; 
+       score = playerData.score; 
+      
 
 
-      LoadResources loadResource = new LoadResources();
+        LoadResources loadResource = new LoadResources();
 
 
         piece_Track = loadResource.GetTankPieceScriptable(TankPieceType.Track, playerData.pieceNames[0]);
@@ -237,6 +244,9 @@ public class Player : MonoBehaviour
         piece_GunConnector = loadResource.GetTankPieceScriptable(TankPieceType.GunConnector, playerData.pieceNames[4]);
         piece_Projectile = loadResource.GetTankPieceScriptable(TankPieceType.Projectile, playerData.pieceNames[5]);
 
+        piece_lightColor = playerData.colorTank;
+
+
 
         spriteModifier.ChangeSprite(piece_Track.pieceType,piece_Track.pieceSprite);
         spriteModifier.ChangeSprite(piece_Hull.pieceType,piece_Hull.pieceSprite);
@@ -244,6 +254,8 @@ public class Player : MonoBehaviour
         spriteModifier.ChangeSprite(piece_Gun.pieceType,piece_Gun.pieceSprite);
         spriteModifier.ChangeSprite(piece_GunConnector.pieceType,piece_GunConnector.pieceSprite);
         spriteModifier.ChangeSprite(piece_Projectile.pieceType,piece_Projectile.pieceSprite);
+        spriteModifier.ChangeLightColor(piece_lightColor);
+       
 
 
         UpdateControllerWithTankPieces();
@@ -265,6 +277,8 @@ public class Player : MonoBehaviour
         playerData.pieceNames.Add(piece_GunConnector.id);
         playerData.pieceNames.Add(piece_Projectile.id);
 
+
+        playerData.colorTank = piece_lightColor;
 
         LoadSaveSystem loadSave = new LoadSaveSystem();
         loadSave.SavePlayerInfo(playerData);

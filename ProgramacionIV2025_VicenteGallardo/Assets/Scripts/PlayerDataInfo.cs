@@ -10,8 +10,8 @@ public class PlayerDataInfo
     public List<string> pieceNames;
     public int currentDmg;
     public int score;
+    public Color colorTank;
 
-
-
+    
 
 }

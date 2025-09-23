@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+    using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,6 +8,7 @@ public class PlayerPieceModifierMain : MonoBehaviour
     [SerializeField] PanelPieceSelection panelPieceSelection;
     [SerializeField] PanelPartTypeSelection panelPieceTypeSelection;
     [SerializeField] TankSpriteModifier tankSpriteModifier;
+    [SerializeField] ColorPicker colorPicker;
 
     [Header("Pieces Info")]
     [SerializeField] List<TankPieceScriptable> tpiece_GunConnector;
@@ -18,6 +19,7 @@ public class PlayerPieceModifierMain : MonoBehaviour
     [SerializeField] List<TankPieceScriptable> tpiece_Projectiles;
 
     [SerializeField] UnityEvent<TankPieceScriptable> OnTankPieceChangeEvent;
+    [SerializeField] UnityEvent<Color> OnTankPieceChangeEventColor;
 
     private void Start()
     {
@@ -26,7 +28,18 @@ public class PlayerPieceModifierMain : MonoBehaviour
 
     public void OnPieceTypeSelected(TankPieceType pieceType)
     {
-        panelPieceSelection.SetPanelSelection(GetPiecesByType(pieceType));
+        if(pieceType == TankPieceType.Light)
+        {
+            panelPieceSelection.EnablePanel(false);
+            colorPicker.EnablePanel(true);
+        }
+        else
+        {
+            panelPieceSelection.EnablePanel(true);
+            colorPicker.EnablePanel(false);
+            panelPieceSelection.SetPanelSelection(GetPiecesByType(pieceType));
+        }
+    
     }
 
     public void OnPieceSelected(TankPieceType pieceType, string id)
@@ -39,6 +52,12 @@ public class PlayerPieceModifierMain : MonoBehaviour
         panelPieceTypeSelection.SetButtonSelectPartType(tankPiece.pieceType, tankPiece.pieceSprite);
         tankSpriteModifier.ChangeSprite(tankPiece.pieceType, tankPiece.pieceSprite);
         OnTankPieceChangeEvent?.Invoke(tankPiece);
+        
+    }
+    public void OnChangeColor(Color color)
+    {
+        tankSpriteModifier.ChangeLightColor(color);
+        OnTankPieceChangeEventColor?.Invoke(color);
     }
 
     private List<TankPieceScriptable> GetPiecesByType(TankPieceType pieceType)
@@ -74,4 +93,6 @@ public class PlayerPieceModifierMain : MonoBehaviour
     {
         return GetPiecesByType(pieceType).Find(x => x.id == pieceID);
     }
+
+   
 }
