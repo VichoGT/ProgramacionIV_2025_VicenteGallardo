@@ -10,6 +10,9 @@ public class PlayerPieceModifierMain : MonoBehaviour
     [SerializeField] TankSpriteModifier tankSpriteModifier;
     [SerializeField] ColorPicker colorPicker;
 
+    [Header("InputField")]
+    [SerializeField] TMPro.TMP_InputField inputField;
+
     [Header("Pieces Info")]
     [SerializeField] List<TankPieceScriptable> tpiece_GunConnector;
     [SerializeField] List<TankPieceScriptable> tpiece_Guns;
@@ -20,6 +23,23 @@ public class PlayerPieceModifierMain : MonoBehaviour
 
     [SerializeField] UnityEvent<TankPieceScriptable> OnTankPieceChangeEvent;
     [SerializeField] UnityEvent<Color> OnTankPieceChangeEventColor;
+    [SerializeField] UnityEvent<string> OnTankChangeName;
+
+
+
+    private void Awake()
+    {
+        inputField.onValueChanged.AddListener(ChangeName);
+
+
+    }
+    public void ChangeName(string val)
+    {
+        OnTankChangeName?.Invoke(val);
+    }
+
+
+
 
     private void Start()
     {

@@ -1181,7 +1181,6 @@ GameObject:
   m_Component:
   - component: {fileID: 290467180}
   - component: {fileID: 290467181}
-  - component: {fileID: 290467182}
   - component: {fileID: 290467183}
   - component: {fileID: 290467184}
   m_Layer: 0
@@ -1221,15 +1220,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 290467184}
-  shooting: {fileID: 290467182}
+  shooting: {fileID: 7343441447267089026}
   bullet: {fileID: 2099485073049347079, guid: ba91ccf2f69ede44496c799f384dccec, type: 3}
+  movTurret: {fileID: 7343441447267089025}
   currentStats: []
   tankName: 
   currentDmg: 0
   score: 0
   spriteModifier: {fileID: 6419668348947913030}
   tankNameCurrent: {fileID: 282133094}
-  inputField: {fileID: 263256846}
   piece_lightColor: {r: 0, g: 0, b: 0, a: 0}
   piece_Track: {fileID: 11400000, guid: 7212ae7a7d3b837479ea4e5adf440fd7, type: 2}
   piece_Hull: {fileID: 11400000, guid: f0197c53fb000e94d9b89a0408ae0db4, type: 2}
@@ -1256,22 +1255,6 @@ MonoBehaviour:
   stat_PowerShoot:
     type: 5
     value: 0
---- !u!114 &290467182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 290467179}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3094aff407261454a995fab67eb8ff0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputActions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  spawnPoint: {fileID: 411125562}
-  bulletPrefab: {fileID: 2312928627125083792, guid: ba91ccf2f69ede44496c799f384dccec, type: 3}
-  powerShoot: 0
 --- !u!50 &290467183
 Rigidbody2D:
   serializedVersion: 5
@@ -1562,7 +1545,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5821221057246373375}
+  m_Father: {fileID: 6703192629129738470}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &421658792
 GameObject:
@@ -2227,6 +2210,7 @@ MonoBehaviour:
   panelPieceTypeSelection: {fileID: 1173064345}
   tankSpriteModifier: {fileID: 6419668348947913030}
   colorPicker: {fileID: 1173064346}
+  inputField: {fileID: 263256846}
   tpiece_GunConnector:
   - {fileID: 11400000, guid: 5485e71fb8774654590470ba9b0c7d01, type: 2}
   - {fileID: 11400000, guid: c9e15e00e9e0b8c4a969af03ec5f79a9, type: 2}
@@ -2310,6 +2294,21 @@ MonoBehaviour:
       - m_Target: {fileID: 290467181}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: OnChangeColorTank
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnTankChangeName:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 290467181}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: ChangeName
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5005,7 +5004,7 @@ MonoBehaviour:
   canvasPanelStore: {fileID: 1324656773}
   canvasPauseGame: {fileID: 1210944862}
   isGamePaused: 0
-  shooting: {fileID: 290467182}
+  shooting: {fileID: 7343441447267089026}
 --- !u!1 &1347215042
 GameObject:
   m_ObjectHideFlags: 0
@@ -6562,6 +6561,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 02032955-61a8-40e1-9bfa-0daa6503d89c
+    m_ActionName: 'Player/MovementTurret[/Keyboard/q,/Keyboard/e]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -7812,7 +7815,6 @@ Transform:
   - {fileID: 4452758894770455467}
   - {fileID: 4706968929196216970}
   - {fileID: 6703192629129738470}
-  - {fileID: 411125562}
   m_Father: {fileID: 290467180}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5893547362732078356
@@ -8093,6 +8095,7 @@ Transform:
   m_Children:
   - {fileID: 2510930464084894057}
   - {fileID: 2821622087127955078}
+  - {fileID: 411125562}
   m_Father: {fileID: 5821221057246373375}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7184878949900492972
@@ -8180,34 +8183,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   action: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  rotateSpd: 3
---- !u!50 &7343441447267089026
-Rigidbody2D:
-  serializedVersion: 5
+  rotateSpd: 10
+--- !u!114 &7343441447267089026
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 178670475065550242}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3094aff407261454a995fab67eb8ff0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputActions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  spawnPoint: {fileID: 411125562}
+  bulletPrefab: {fileID: 2312928627125083792, guid: ba91ccf2f69ede44496c799f384dccec, type: 3}
+  powerShoot: 5
 --- !u!212 &7884391891963567770
 SpriteRenderer:
   m_ObjectHideFlags: 0

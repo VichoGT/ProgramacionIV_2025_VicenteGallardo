@@ -495,31 +495,9 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Up",
-                    "id": "5f2469f0-490c-46f5-a70f-0ad74e85a50f",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MovementTurret",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Down",
-                    "id": "c12b39f9-50c9-465f-8815-70b4b6e82a1f",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MovementTurret",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "Left",
                     "id": "17de132c-e680-4f48-bb29-661d2be87192",
-                    "path": "",
+                    "path": "<Keyboard>/#(Q)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -530,7 +508,7 @@
                 {
                     "name": "Right",
                     "id": "479a9cf3-7eae-44a4-b6f6-36545ee19480",
-                    "path": "",
+                    "path": "<Keyboard>/#(E)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
