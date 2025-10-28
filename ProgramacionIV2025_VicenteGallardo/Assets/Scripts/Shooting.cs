@@ -45,7 +45,7 @@ public class Shooting : MonoBehaviour
             rb.linearVelocity = spawnPoint.up * powerShoot;
             rb.transform.up = spawnPoint.up;
         }
-        Destroy(bullet,2);
+        Destroy(bullet,3);
     }
 
 

@@ -9,7 +9,6 @@ public class LoadSaveSystem
     {
         string json = PlayerPrefs.GetString(playerinfodDataKey);
        
-
         PlayerDataInfo loadData = JsonUtility.FromJson<PlayerDataInfo>(json);
         return loadData;
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.SocialPlatforms.Impl;
-
+using UnityEngine.UI;
 public class LoginManager : MonoBehaviour
 {
     [SerializeField] PlayfabManager playfabManager;
@@ -30,11 +30,26 @@ public class LoginManager : MonoBehaviour
         SetPanels(LoginPanelType.Login);
     }
 
-  
-    public void DisplayName()
+    private void Update()
     {
-        playfabManager.SetDisplayName(email, OnEndRequest);
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            SavePJData();
+            playfabManager.AddDataToMaxScore(score, OnEndRequest);
+        }
+        //tuve un error
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            LoadPJData();
+            LoadLeaderBoard();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha6))   
+        {
+            playfabManager.SetDisplayName(userName, OnEndRequest);
+        }
     }
+
     void LoadLeaderBoard()
     {
         playfabManager.GetDataFromMaxScore(OnEndLoadLeaderBoard);
@@ -44,7 +59,8 @@ public class LoginManager : MonoBehaviour
     {
         leaderBoard = data;
     }
-    public void SavePJData()
+
+    void SavePJData()
     {
         //ambas son exactamente lo mismo
         PJData pjData = new PJData()
@@ -57,15 +73,13 @@ public class LoginManager : MonoBehaviour
 
         SetBlockPanel("Saving data, not close de app", true);
         playfabManager.SaveDataInfo(json, "PjInfo", OnEndRequest);
-        playfabManager.AddDataToMaxScore(score, OnEndRequest);
     }
 
     //Para esto vamos a necesitar dos funciones una para llamar la carga y otra para cuando termine
-   public  void LoadPJData()
+    void LoadPJData()
     {
         SetBlockPanel("Loading data, not close de app", true);
         playfabManager.LoadDataInfo("PjInfo", OnEndLoadData);
-        LoadLeaderBoard();
     }
 
     //esto en funcion a mi delegado de PlayfabManager
@@ -126,6 +140,7 @@ public class LoginManager : MonoBehaviour
             }
             else panels[i].SetActive(false);
         }
+        currentPanel = panelType;
     }
 
     public void ChangeUserName(string val)
@@ -150,8 +165,10 @@ public class LoginManager : MonoBehaviour
 
     public void LoginButton()
     {
-        SetBlockPanel("Loading...", true);
-        playfabManager.LoginUser(email, password, OnEndRequest);
+        SetBlockPanel("Loading", true);
+        playfabManager.LoginUserName(userName, password, OnEndRequest);
+        SceneManager.LoadScene(1);
+
     }
 
     public void CreateAcountButton()
@@ -204,6 +221,8 @@ public class PJData
     public int lifePoints;
     public int score;
 }
+//esta clase la volveremos un JSON
+
 [System.Serializable]
 public class LeaderboardData
 {

@@ -203,7 +203,7 @@ public class Player : MonoBehaviour
                     movTurret.rotateSpd = item.value;
                     break;
                 case StatType.Attack:
-                    bullet.dmg = item.value;
+                    bullet.dmg = (int)item.value;
                     break;
                 case StatType.Defense:
                     break;

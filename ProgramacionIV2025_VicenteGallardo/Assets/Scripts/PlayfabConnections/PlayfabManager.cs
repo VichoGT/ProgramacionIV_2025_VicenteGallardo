@@ -35,7 +35,7 @@ public class PlayfabManager : MonoBehaviour
             Please change the titleId below to your own titleId from PlayFab Game Manager.
             If you have already set the value in the Editor Extensions, this can be skipped.
             */
-            PlayFabSettings.staticSettings.TitleId = "157271";
+            PlayFabSettings.staticSettings.TitleId = "108077";
         }
 
         var request = new LoginWithCustomIDRequest
@@ -79,6 +79,7 @@ public class PlayfabManager : MonoBehaviour
             Username = userName,
             Email = email,
             Password = password,
+            DisplayName = userName,
             RequireBothUsernameAndEmail = true
         };
 
@@ -243,7 +244,7 @@ public class PlayfabManager : MonoBehaviour
 
     private void OnError(PlayFabError error)
     {
-        Debug.Log("Succes");
+        Debug.Log("Error!");
         OnEndRequestEvent?.Invoke(error.ErrorMessage, false);
         OnEndRequestEvent = null;
     }

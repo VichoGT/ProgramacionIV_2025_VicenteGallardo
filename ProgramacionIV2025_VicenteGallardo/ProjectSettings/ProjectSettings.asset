@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: VGCompany
   productName: ProgramacionIV2025_VicenteGallardo
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -767,7 +767,7 @@ PlayerSettings:
   qnxGraphicConfPath: 
   apiCompatibilityLevel: 6
   captureStartupLogs: {}
-  activeInputHandler: 1
+  activeInputHandler: 2
   windowsGamepadBackendHint: 0
   cloudProjectId: ea90cc36-057d-4c48-a542-8d2710aaf171
   framebufferDepthMemorylessMode: 0
