@@ -27,6 +27,7 @@ public class LoginManager : MonoBehaviour
 
     private void Start()
     {
+        playfabManager = new PlayfabManager();
         SetPanels(LoginPanelType.Login);
     }
 
@@ -167,7 +168,7 @@ public class LoginManager : MonoBehaviour
     {
         SetBlockPanel("Loading", true);
         playfabManager.LoginUserName(userName, password, OnEndRequest);
-        SceneManager.LoadScene(1);
+       
 
     }
 

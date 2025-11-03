@@ -222,14 +222,17 @@ public class Player : MonoBehaviour
     public void LoadData()
     {
         LoadSaveSystem loadSave = new LoadSaveSystem();
-        PlayerDataInfo playerData = loadSave.LoadPlayerInfo();
+        PlayerDataInfo playerData = loadSave.LoadPlayerInfo(OnEndLoadData);
 
+    }
+     
+    public void OnEndLoadData(PlayerDataInfo playerData)
+    {
 
+        ChangeName(playerData.playerName);
+        currentDmg = playerData.currentDmg;
+        score = playerData.score;
 
-       ChangeName(playerData.playerName);
-       currentDmg = playerData.currentDmg; 
-       score = playerData.score; 
-      
 
 
         LoadResources loadResource = new LoadResources();
@@ -246,19 +249,18 @@ public class Player : MonoBehaviour
 
 
 
-        spriteModifier.ChangeSprite(piece_Track.pieceType,piece_Track.pieceSprite);
-        spriteModifier.ChangeSprite(piece_Hull.pieceType,piece_Hull.pieceSprite);
-        spriteModifier.ChangeSprite(piece_Tower.pieceType,piece_Tower.pieceSprite);
-        spriteModifier.ChangeSprite(piece_Gun.pieceType,piece_Gun.pieceSprite);
-        spriteModifier.ChangeSprite(piece_GunConnector.pieceType,piece_GunConnector.pieceSprite);
-        spriteModifier.ChangeSprite(piece_Projectile.pieceType,piece_Projectile.pieceSprite);
+        spriteModifier.ChangeSprite(piece_Track.pieceType, piece_Track.pieceSprite);
+        spriteModifier.ChangeSprite(piece_Hull.pieceType, piece_Hull.pieceSprite);
+        spriteModifier.ChangeSprite(piece_Tower.pieceType, piece_Tower.pieceSprite);
+        spriteModifier.ChangeSprite(piece_Gun.pieceType, piece_Gun.pieceSprite);
+        spriteModifier.ChangeSprite(piece_GunConnector.pieceType, piece_GunConnector.pieceSprite);
+        spriteModifier.ChangeSprite(piece_Projectile.pieceType, piece_Projectile.pieceSprite);
         spriteModifier.ChangeLightColor(piece_lightColor);
-       
+
 
 
         UpdateControllerWithTankPieces();
     }
-     
     public void SaveData()
     {
         PlayerDataInfo playerData = new PlayerDataInfo();

@@ -10,7 +10,7 @@ using UnityEngine.SocialPlatforms.Impl;
 
 
 
-public class PlayfabManager : MonoBehaviour
+public class PlayfabManager
 {
     public string userName;
     public string email;
