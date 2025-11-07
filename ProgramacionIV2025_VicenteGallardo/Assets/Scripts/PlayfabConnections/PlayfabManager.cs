@@ -93,7 +93,6 @@ public class PlayfabManager
         {
             Email = email,
             TitleId = PlayFabSettings.staticSettings.TitleId
-
         };
 
         PlayFabClientAPI.SendAccountRecoveryEmail(request, OnRequestSucces, OnError);
@@ -177,6 +176,7 @@ public class PlayfabManager
     private void OnLeaderBoardLoad(GetLeaderboardResult result)
     {
         List<LeaderboardData> dataList = new List<LeaderboardData>();
+
         foreach (var item in result.Leaderboard)
         {
             LeaderboardData newData = new LeaderboardData()
