@@ -30,7 +30,6 @@ public class PlayerScoreManager : MonoBehaviour
     {
         PlayfabManager playfabManager = new PlayfabManager();
         playfabManager.AddDataToMaxScore(score, onEndSave);
-        PlayerPrefs.SetInt("CurrentPoints", score);
     }
 
     

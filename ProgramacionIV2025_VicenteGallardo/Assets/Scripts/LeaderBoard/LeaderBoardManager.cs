@@ -6,27 +6,23 @@ using UnityEngine;
 public class LeaderBoardManager : MonoBehaviour
 {
     [SerializeField] LeaderBoardContent[] leaderboardContents;
-    [SerializeField] CanvasAnimation canvasAnim;
     public int score;
 
    
-    private void Start()
+    private void Update()
     {
-        score = PlayerPrefs.GetInt("CurrentPoints");
-        StartCoroutine(TimerLoad());
+       StartCoroutine(TimerLoad());
     }
     IEnumerator TimerLoad()
     {
-        yield return canvasAnim.AnimPanelCoroutine(true);
-        yield return canvasAnim.ShowPointsCoroutine(score);
+        yield return new WaitForSeconds(0.4f);
         LoadLeaderboard();
-        yield return null;
+        //yield return null;
        
     }
-    
-    
+   
 
-    void LoadLeaderboard() 
+    void LoadLeaderboard()
     {
         PlayfabManager playfabmanager = new PlayfabManager();
         playfabmanager.GetDataFromMaxScore(SetContent);
