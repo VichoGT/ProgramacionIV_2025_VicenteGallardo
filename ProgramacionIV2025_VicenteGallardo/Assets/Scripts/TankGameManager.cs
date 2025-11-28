@@ -10,23 +10,31 @@ public class TankGameManager : MonoBehaviour
     public TextMeshProUGUI textoTimer;
     //Faltaria solo Hacer La condicion de victoria o derrota 
     private bool contando = true;
+    float startRealtime;
+    float realTime; // es para saber cual es el tiempo real que duro el pj
+    // Crear un real tie
     void Start()
     {
+        startRealtime = Time.time;
+
         tiempoRestante = tiempoInicial;
     }
     void Update()
     {
         if (contando)
         {
+            realTime = Time.time - startRealtime;
             // Resta el tiempo que ha pasado desde el último frame
             tiempoRestante -= Time.deltaTime;
 
             // Evita que sea menor a 0
             if (tiempoRestante <= 0)
             {
+                Debug.Log("Hola123");
                 tiempoRestante = 0;
                 contando = false;
                 FinishTimer();
+                AnalyticsManager.Instance.PlayerDied("Time Finished", realTime, player.transform.position);
             }
 
             // Muestra el tiempo redondeado

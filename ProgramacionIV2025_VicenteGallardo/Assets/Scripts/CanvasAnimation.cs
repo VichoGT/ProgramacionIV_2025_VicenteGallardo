@@ -10,7 +10,7 @@ public class CanvasAnimation : MonoBehaviour
     [SerializeField] float tiempoTotal; // tiempo total 
     [SerializeField] float enableObjectsTime = 0.05f; // 
     [SerializeField] AnimationCurve animationCurve; // como va a ser el mov del panel
-    bool isAnim = false;
+     bool isAnim = false;
 
 
     private void Start()
