@@ -51,53 +51,54 @@ public class MySecondCustomEvent : Event
         {
             SetParameter("mSCE_LindoString", value);
         }
-    }
+    }    
+}
 
-    public class PlayerDieEvent : Event
+public class PlayerDieEvent : Event
+{
+
+    // al constructor le ponemos el mismo tipo que la clase
+    public PlayerDieEvent() : base("PlayerDieEvent") // base("siempre va el nombre del evento igual que el dashboard")
     {
-
-        // al constructor le ponemos el mismo tipo que la clase
-        public PlayerDieEvent() : base("PlayerDied") // base("siempre va el nombre del evento igual que el dashboard")
-        {
-        }
+    }
 
 
-        // aca abajo vamos a poner las mismas variables que nuestro evento en el dashboard
+    // aca abajo vamos a poner las mismas variables que nuestro evento en el dashboard
 
-        public string PD_Reason
+    public string PD_Reason
+    {
+        set
         {
-            set
-            {
-                SetParameter("PD_Reason", value);
-            }
-        }
-        public float PD_Time
-        {
-            set
-            {
-                SetParameter("PD_Time", value);
-            }
-        }
-        public float PD_PosX
-        {
-            set
-            {
-                SetParameter("PD_PosX", value);
-            }
-        }  public float PD_PosY
-        {
-            set
-            {
-                SetParameter("PD_PosY", value);
-            }
-        }  public float PD_PosZ
-        {
-            set
-            {
-                SetParameter("PD_PosZ", value);
-            }
+            SetParameter("PD_Reason", value);
         }
     }
-    
+    public float PD_Time
+    {
+        set
+        {
+            SetParameter("PD_Time", value);
+        }
+    }
+    public float PD_PosX
+    {
+        set
+        {
+            SetParameter("PD_PosX", value);
+        }
+    }
+    public float PD_PosY
+    {
+        set
+        {
+            SetParameter("PD_PosY", value);
+        }
+    }
+    public float PD_PosZ
+    {
+        set
+        {
+            SetParameter("PD_PosZ", value);
+        }
+    }
 }
 

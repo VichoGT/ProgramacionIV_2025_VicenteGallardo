@@ -113,11 +113,11 @@ public class AnalyticsManager : MonoBehaviour
 
    
 
-    public void EnemiesDiesId(string enemies)  // funcion dos
+    public void EnemiesDiesId(string enemies) // funcion uno 
     {
         
     } 
-    public void MaxPoint(int points)  // funcion uno
+    public void MaxPoint(int points)  // funcion dos
     {
         
     }

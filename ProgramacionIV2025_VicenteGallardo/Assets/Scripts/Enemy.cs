@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
-        PlayerScoreManager.Instance.AddScore(scoreValue);
+        PlayerScoreManager.Instance.AddScore(scoreValue); // aqui dependiendo del puntaje del enemigo el jugadoor recibira x cantidad de puntajes
         Destroy(gameObject);
     }
 
