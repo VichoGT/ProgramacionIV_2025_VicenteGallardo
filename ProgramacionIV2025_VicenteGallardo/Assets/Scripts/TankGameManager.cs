@@ -34,7 +34,11 @@ public class TankGameManager : MonoBehaviour
                 contando = false;
                 FinishTimer();
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                
+=======
+                
+>>>>>>> Stashed changes
 =======
                 
 >>>>>>> Stashed changes
@@ -50,6 +54,10 @@ public class TankGameManager : MonoBehaviour
         GameOver();
         OnEndSaveScore("GameOver", true);
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+        AnalyticsManager.Instance.PlayerDied("Time Finished", realTime, player.transform.position);
+>>>>>>> Stashed changes
 =======
         AnalyticsManager.Instance.PlayerDied("Time Finished", realTime, player.transform.position);
 >>>>>>> Stashed changes
@@ -63,7 +71,11 @@ public class TankGameManager : MonoBehaviour
         player.SaveData();
         PlayerScoreManager.Instance.SaveDataToLeaderBoard(OnEndSaveScore);
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         AnalyticsManager.Instance.PlayerDied("Time Finished", realTime, player.transform.position);
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes
