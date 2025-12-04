@@ -33,7 +33,11 @@ public class TankGameManager : MonoBehaviour
                 tiempoRestante = 0;
                 contando = false;
                 FinishTimer();
+<<<<<<< Updated upstream
                
+=======
+                
+>>>>>>> Stashed changes
             }
 
             // Muestra el tiempo redondeado
@@ -45,7 +49,12 @@ public class TankGameManager : MonoBehaviour
     {
         GameOver();
         OnEndSaveScore("GameOver", true);
+<<<<<<< Updated upstream
+=======
+        AnalyticsManager.Instance.PlayerDied("Time Finished", realTime, player.transform.position);
+>>>>>>> Stashed changes
         Debug.Log("¡Tiempo finalizado!");
+
         // Aquí puedes poner lo que pase cuando el tiempo llegue a 0
     }
     void GameOver()
@@ -53,11 +62,15 @@ public class TankGameManager : MonoBehaviour
         player.score = PlayerScoreManager.Instance.score;
         player.SaveData();
         PlayerScoreManager.Instance.SaveDataToLeaderBoard(OnEndSaveScore);
+<<<<<<< Updated upstream
         AnalyticsManager.Instance.PlayerDied("Time Finished", realTime, player.transform.position);
+=======
+
+>>>>>>> Stashed changes
     }
 
     private void OnEndSaveScore(string msg, bool result)
     {
-        SceneManager.LoadScene(2);       
+        SceneManager.LoadScene(2); // aqui va a la escena de gameover   
     }
 }
