@@ -28,10 +28,13 @@ public class PlayerScoreManager : MonoBehaviour
 
     public void SaveDataToLeaderBoard(PlayfabManager.OnEndRequestDel onEndSave)
     {
+        
         PlayfabManager playfabManager = new PlayfabManager();
-        playfabManager.AddDataToMaxScore(score, onEndSave);
+        playfabManager.AddDataToMaxScore(score, onEndSave);   
         PlayerPrefs.SetInt("CurrentPoints", score);
+        AnalyticsManager.Instance.MaxPointsPerGame(score);
+
     }
 
-    
+
 }
