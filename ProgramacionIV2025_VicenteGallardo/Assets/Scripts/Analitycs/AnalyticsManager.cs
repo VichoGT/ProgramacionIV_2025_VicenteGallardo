@@ -1,13 +1,11 @@
-using PlayFab;
 using PlayFab.EventsModels;
-using System;
+using PlayFab;
 using System.Collections.Generic;
-using Unity.Services.Analytics;
-using Unity.Services.Core;
+using System;
 using UnityEngine;
+using Unity.Services.Core;
+using Unity.Services.Analytics;
 using static MySecondCustomEvent;
-using static PlayerDieEvent;
-using static UnityEditor.PlayerSettings;
 
 public class AnalyticsManager : MonoBehaviour
 {
@@ -89,7 +87,7 @@ public class AnalyticsManager : MonoBehaviour
        
     }
 
-    public void PlayerDied(string reason, float time, Vector3 pos) // funcion uno 
+    public void PlayerDied(string reason, float time, Vector3 pos)
     {
         if(isInitilized)
         {
@@ -108,58 +106,21 @@ public class AnalyticsManager : MonoBehaviour
         }
     }
 
-    public void EnemyDefeated (string enemies) // funcion dos
+    public void ItemCollected(string itemId)
     {
-        if (isInitilized)
-        {
-            
-            EnemyDefeatedEvent enemyDefeatedEvent = new EnemyDefeatedEvent()
-            {
+      
+    }
 
-                EDE_StringEnemy = enemies,
+   
 
-            };
-            AnalyticsService.Instance.RecordEvent(enemyDefeatedEvent);
-            AnalyticsService.Instance.Flush();
-           
-        }
-            
+    public void EnemiesDiesId(string enemies) // funcion uno 
+    {
+        
     } 
-    public void MaxPointsPerGame(int points)  // funcion tres
+    public void MaxPoint(int points)  // funcion dos
     {
-        if (isInitilized)
-        {
-            Debug.Log("Estoy Scoreando!");
-            MaxPointsPerGameEvent maxPointsPerGameEvent = new MaxPointsPerGameEvent()
-            {
-
-                MPPGE_IntScore = points,
-
-            };
-            AnalyticsService.Instance.RecordEvent(maxPointsPerGameEvent);
-            AnalyticsService.Instance.Flush();
-
-        }
-
+        
     }
-    
-    public void MaxBulletsShoot(int bullets)  // funcion cuatro
-    {
-        if (isInitilized)
-        {
-
-            MaxBulletShootEvent maxBulletShootEvent = new MaxBulletShootEvent()
-            {
-
-                MBSE_IntBullet = bullets,
-
-            };
-            AnalyticsService.Instance.RecordEvent(maxBulletShootEvent);
-            AnalyticsService.Instance.Flush();
-
-        }
-
-    }
-
-    // en la nomenclatura de playfab, se usa el guion bajo para separar palabras
+  
+    // en la nomenclatura de playfab, se usa el guio bajo para separar palabras
 }
