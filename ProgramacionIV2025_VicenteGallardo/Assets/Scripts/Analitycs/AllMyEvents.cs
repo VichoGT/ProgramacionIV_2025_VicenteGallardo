@@ -53,8 +53,8 @@ public class MySecondCustomEvent : Event
         }
     }    
 }
-
-public class PlayerDieEvent : Event
+//.........................................................................................................................//
+public class PlayerDieEvent : Event // OK
 {
 
     // al constructor le ponemos el mismo tipo que la clase
@@ -100,5 +100,71 @@ public class PlayerDieEvent : Event
             SetParameter("PD_PosZ", value);
         }
     }
+
+    public class EnemyDefeatedEvent : Event  // OK 
+    {
+
+        // al constructor le ponemos el mismo tipo que la clase
+        public EnemyDefeatedEvent() : base("EnemyDefeatedEvent") // base("siempre va el nombre del evento igual que el dashboard")
+        {
+        }
+
+        // aca abajo vamos a poner las mismas variables que nuestro evento en el dashboard
+
+
+
+        public string EDE_StringEnemy
+        {
+            set
+            {
+                SetParameter("EDE_StringEnemy", value);
+            }
+        }
+
+    }
+    public class MaxPointsPerGameEvent : Event
+    {
+
+        // al constructor le ponemos el mismo tipo que la clase
+        public MaxPointsPerGameEvent() : base("MaxPointsPerGameEvent") // base("siempre va el nombre del evento igual que el dashboard")
+        {
+        }
+
+        // aca abajo vamos a poner las mismas variables que nuestro evento en el dashboard
+
+
+
+        public int MPPGE_IntScore
+        {
+            set
+            {
+                SetParameter("MPPGE_IntScore", value);
+            }
+        }
+    }
+    public class MaxBulletShootEvent : Event  // OK
+    {
+
+        // al constructor le ponemos el mismo tipo que la clase
+        public MaxBulletShootEvent() : base("MaxBulletShootEvent") // base("siempre va el nombre del evento igual que el dashboard")
+        {
+        }
+
+        // aca abajo vamos a poner las mismas variables que nuestro evento en el dashboard
+
+
+
+        public int MBSE_IntBullet
+        {
+            set
+            {
+                SetParameter("MBSE_IntBullet", value);
+            }
+        }
+    }
+
+
+
+
 }
 

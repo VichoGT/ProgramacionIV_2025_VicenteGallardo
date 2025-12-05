@@ -13,8 +13,8 @@ public class Shooting : MonoBehaviour
     public Transform spawnPoint;
     public GameObject bulletPrefab;
     public float powerShoot;
+    private int bulletCount;
 
-   
     public void OnEnable()
     {
         inputActions.FindActionMap("Player").Enable();
@@ -32,6 +32,8 @@ public class Shooting : MonoBehaviour
         if (m_attackAction.WasPerformedThisFrame())
         {
             Shoot();
+            bulletCount++;
+            AnalyticsManager.Instance.MaxBulletsShoot(bulletCount);
         }
     }
     
